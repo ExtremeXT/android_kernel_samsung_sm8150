@@ -6070,7 +6070,7 @@ CONFIG_SENSORS_ET5XX=y
 #
 # samsung Performace manager
 #
-CONFIG_KPERFMON=y
+# CONFIG_KPERFMON is not set
 CONFIG_SPU_VERIFY=y
 
 #
