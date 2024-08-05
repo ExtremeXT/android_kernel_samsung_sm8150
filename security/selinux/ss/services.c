@@ -762,9 +762,6 @@ out:
 	kfree(t);
 
 // [ SEC_SELINUX_PORTING_COMMON
-#ifdef CONFIG_ALWAYS_ENFORCE
-	selinux_enforcing = 1;
-#endif
 	if (!selinux_enforcing) // SEC_SELINUX_PORTING_COMMON Change to use RKP 
 		return 0;
 // ] SEC_SELINUX_PORTING_COMMON
@@ -1655,9 +1652,6 @@ out:
 	kfree(n);
 
 // [ SEC_SELINUX_PORTING_COMMON
-#ifdef CONFIG_ALWAYS_ENFORCE
-	selinux_enforcing = 1;
-#endif
 	if (!selinux_enforcing) // SEC_SELINUX_PORTING_COMMON Change to use RKP 
 		return 0;
 // ] SEC_SELINUX_PORTING_COMMON
@@ -1958,9 +1952,6 @@ static inline int convert_context_handle_invalid_context(
 	u32 len;
 
 // [ SEC_SELINUX_PORTING_COMMON 
-#ifdef CONFIG_ALWAYS_ENFORCE
-	selinux_enforcing = 1;
-#endif
 	if (!selinux_enforcing) // SEC_SELINUX_PORTING_COMMON Change to use RKP
 		return -EINVAL;
 // ] SEC_SELINUX_PORTING_COMMON
