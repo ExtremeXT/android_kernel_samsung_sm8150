@@ -443,11 +443,6 @@ static unsigned long do_shrink_slab(struct shrink_control *shrinkctl,
 
 	trace_mm_shrink_slab_end(shrinker, nid, freed, nr, new_nr, total_scan);
 
-	if (time_after(jiffies, shrinker_time + SHRINKER_MAX_TIME))
-		ologk("%s time:%lu %pF nid:%d freed:%ld nr:%ld new_nr:%ld total_scan:%ld",
-			__func__, jiffies_to_msecs(jiffies - shrinker_time), shrinker->scan_objects,
-			nid, freed, nr, new_nr, total_scan);
-
 	return freed;
 }
 
@@ -3025,11 +3020,6 @@ static bool shrink_node(pg_data_t *pgdat, struct scan_control *sc)
 	 */
 	if (reclaimable)
 		pgdat->kswapd_failures = 0;
-
-	if (sc->priority <= 2 && time_after(jiffies, shrink_node_time + SHRINK_NODE_MAX_TIME))
-		ologk("%s priority:%d time:%lu nr_scanned:%lu nr_reclaimed:%lu",
-			__func__, sc->priority, jiffies_to_msecs(jiffies - shrink_node_time),
-			sc->nr_scanned, sc->nr_reclaimed);
 
 	return reclaimable;
 }
